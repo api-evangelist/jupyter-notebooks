@@ -1,99 +1,45 @@
-name: Jupyter Notebook APIs
-description: A collection of APIs for the Jupyter Notebook platform, an open-source web application for creating and sharing computational documents
-image: https://jupyter.org/assets/homepage/main-logo.svg
-url: https://jupyter.org
-created: '2024-01-15'
-modified: '2024-01-15'
-specificationVersion: '0.18'
-apis:
-- name: Jupyter Notebook REST API
-  description: REST API for interacting with Jupyter Notebook servers, managing kernels, notebooks, and sessions
-  image: https://jupyter.org/assets/homepage/main-logo.svg
-  humanURL: https://jupyter-notebook.readthedocs.io/en/stable/
-  baseURL: http://localhost:8888
-  tags:
-  - notebooks
-  - kernels
-  - interactive computing
-  - data science
-  properties:
-  - type: Documentation
-    url: https://jupyter-notebook.readthedocs.io/en/stable/extending/rest_api.html
-  - type: OpenAPI
-    url: https://petstore.swagger.io/?url=https://raw.githubusercontent.com/jupyter/notebook/master/notebook/services/api/api.yaml
-  - type: Swagger
-    url: https://raw.githubusercontent.com/jupyter/notebook/master/notebook/services/api/api.yaml
-  contact:
-  - type: GitHub Issues
-    url: https://github.com/jupyter/notebook/issues
-  - type: Mailing List
-    url: https://groups.google.com/forum/#!forum/jupyter
-- name: JupyterHub API
-  description: REST API for JupyterHub, the multi-user server for Jupyter notebooks
-  image: https://jupyter.org/assets/homepage/main-logo.svg
-  humanURL: https://jupyterhub.readthedocs.io/
-  baseURL: http://localhost:8000/hub/api
-  tags:
-  - multi-user
-  - authentication
-  - hub
-  - administration
-  properties:
-  - type: Documentation
-    url: https://jupyterhub.readthedocs.io/en/stable/reference/rest-api.html
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/jupyterhub/jupyterhub/main/docs/rest-api.yml
-  - type: GitHub
-    url: https://github.com/jupyterhub/jupyterhub
-  contact:
-  - type: GitHub Issues
-    url: https://github.com/jupyterhub/jupyterhub/issues
-  - type: Gitter
-    url: https://gitter.im/jupyterhub/jupyterhub
-- name: Jupyter Kernel Gateway API
-  description: Web server that provides headless access to Jupyter kernels
-  image: https://jupyter.org/assets/homepage/main-logo.svg
-  humanURL: https://jupyter-kernel-gateway.readthedocs.io/
-  baseURL: http://localhost:8888
-  tags:
-  - kernels
-  - gateway
-  - websocket
-  - execution
-  properties:
-  - type: Documentation
-    url: https://jupyter-kernel-gateway.readthedocs.io/en/latest/
-  - type: GitHub
-    url: https://github.com/jupyter/kernel_gateway
-  - type: Swagger
-    url: https://jupyter-kernel-gateway.readthedocs.io/en/latest/swagger/kernel_gateway.json
-  contact:
-  - type: GitHub Issues
-    url: https://github.com/jupyter/kernel_gateway/issues
-- name: Jupyter Contents API
-  description: API for managing notebook files and directories
-  image: https://jupyter.org/assets/homepage/main-logo.svg
-  humanURL: https://jupyter-notebook.readthedocs.io/
-  baseURL: http://localhost:8888/api/contents
-  tags:
-  - files
-  - contents
-  - notebooks
-  - directories
-  properties:
-  - type: Documentation
-    url: https://jupyter-notebook.readthedocs.io/en/stable/extending/contents.html
-  - type: GitHub
-    url: https://github.com/jupyter/notebook
-maintainers:
-- name: Project Jupyter
-  email: jupyter@googlegroups.com
-  url: https://jupyter.org
+aid: jupyter-notebooks
+name: Jupyter Notebooks
+description: >-
+  Jupyter Notebooks is the original web application for creating and sharing
+  computational documents. A collection of APIs for the Jupyter Notebook
+  platform, supporting kernels, sessions, contents, and terminal management.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- jupyter
-- notebooks
-- interactive computing
-- data science
-- python
-- kernels
-- scientific computing
+  - Jupyter
+  - Notebooks
+  - Interactive Computing
+  - Data Science
+  - Python
+url: https://raw.githubusercontent.com/api-evangelist/jupyter-notebooks/refs/heads/main/apis.yml
+created: '2024-01-15'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: jupyter-notebooks:notebook-rest-api
+    name: Jupyter Notebook REST API
+    description: >-
+      REST API for interacting with Jupyter Notebook servers, managing
+      kernels, notebooks, and sessions.
+    humanURL: https://jupyter-notebook.readthedocs.io/en/stable/
+    baseURL: http://localhost:8888
+    tags:
+      - Notebooks
+      - Kernels
+      - Interactive Computing
+    properties:
+      - type: Documentation
+        url: https://jupyter-notebook.readthedocs.io/en/stable/extending/rest_api.html
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/jupyter/notebook/master/notebook/services/api/api.yaml
+common:
+  - type: Website
+    url: https://jupyter.org
+  - type: Documentation
+    url: https://jupyter-notebook.readthedocs.io/en/stable/
+  - type: GitHub Organization
+    url: https://github.com/jupyter
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
