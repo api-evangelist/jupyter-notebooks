@@ -7,10 +7,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - Data Science
+  - Interactive Computing
   - Jupyter
   - Notebooks
-  - Interactive Computing
-  - Data Science
   - Python
 url: https://raw.githubusercontent.com/api-evangelist/jupyter-notebooks/refs/heads/main/apis.yml
 created: '2024-01-15'
@@ -25,9 +25,9 @@ apis:
     humanURL: https://jupyter-notebook.readthedocs.io/en/stable/
     baseURL: http://localhost:8888
     tags:
-      - Notebooks
-      - Kernels
       - Interactive Computing
+      - Kernels
+      - Notebooks
     properties:
       - type: Documentation
         url: https://jupyter-notebook.readthedocs.io/en/stable/extending/rest_api.html
