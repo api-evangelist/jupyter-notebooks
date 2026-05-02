@@ -1,84 +1,47 @@
-# Jupyter Notebook APIs (jupyter-notebooks)
-A collection of APIs for the Jupyter Notebook platform, an open-source web application for creating and sharing computational documents
+# Jupyter Notebooks (jupyter-notebooks)
 
-**URL:** [Visit APIs.json URL](https://jupyter.org)
+Jupyter Notebooks is the original web application for creating and sharing computational documents. APIs cover the notebook server, kernels, sessions, contents, and terminal management.
 
-## Tags:
+**URL:** [https://jupyter.org](https://jupyter.org)
 
- - jupyter, notebooks, interactive computing, data science, python, kernels, scientific computing
+## Tags
+
+- Data Science, Interactive Computing, Jupyter, Notebooks, Python
 
 ## Timestamps
 
-- **Created:** 2024-01-15 
-- **Modified:** 2024-01-15 
+- **Created:** 2024-01-15
+- **Modified:** 2026-04-28
 
 ## APIs
 
-### Jupyter Notebook REST API
-REST API for interacting with Jupyter Notebook servers, managing kernels, notebooks, and sessions
+### Jupyter Notebook Server REST API
 
-**Human URL:** [https://jupyter-notebook.readthedocs.io/en/stable/](https://jupyter-notebook.readthedocs.io/en/stable/)
+REST API for the Jupyter Notebook server, providing access to notebook contents, kernels, kernel specs, sessions, and terminals.
 
+**Human URL:** [https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html](https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html)
 
-#### Tags:
+**Base URL:** `http://localhost:8888/api`
 
- - notebooks, kernels, interactive computing, data science
+#### Tags
 
-#### Properties
-
-- [Documentation](https://jupyter-notebook.readthedocs.io/en/stable/extending/rest_api.html)
-- [OpenAPI](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/jupyter/notebook/master/notebook/services/api/api.yaml)
-- [Swagger](https://raw.githubusercontent.com/jupyter/notebook/master/notebook/services/api/api.yaml)
-
-### JupyterHub API
-REST API for JupyterHub, the multi-user server for Jupyter notebooks
-
-**Human URL:** [https://jupyterhub.readthedocs.io/](https://jupyterhub.readthedocs.io/)
-
-
-#### Tags:
-
- - multi-user, authentication, hub, administration
+- Contents, Kernels, Notebooks, Sessions, Terminals
 
 #### Properties
 
-- [Documentation](https://jupyterhub.readthedocs.io/en/stable/reference/rest-api.html)
-- [OpenAPI](https://raw.githubusercontent.com/jupyterhub/jupyterhub/main/docs/rest-api.yml)
-- [GitHub](https://github.com/jupyterhub/jupyterhub)
+- [Documentation](https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html)
+- [OpenAPI](openapi/jupyter-notebooks-openapi.yml)
+- [JSONSchema - Notebook Format](json-schema/jupyter-notebook-format-schema.json)
 
-### Jupyter Kernel Gateway API
-Web server that provides headless access to Jupyter kernels
+## Common Properties
 
-**Human URL:** [https://jupyter-kernel-gateway.readthedocs.io/](https://jupyter-kernel-gateway.readthedocs.io/)
-
-
-#### Tags:
-
- - kernels, gateway, websocket, execution
-
-#### Properties
-
-- [Documentation](https://jupyter-kernel-gateway.readthedocs.io/en/latest/)
-- [GitHub](https://github.com/jupyter/kernel_gateway)
-- [Swagger](https://jupyter-kernel-gateway.readthedocs.io/en/latest/swagger/kernel_gateway.json)
-
-### Jupyter Contents API
-API for managing notebook files and directories
-
-**Human URL:** [https://jupyter-notebook.readthedocs.io/](https://jupyter-notebook.readthedocs.io/)
-
-
-#### Tags:
-
- - files, contents, notebooks, directories
-
-#### Properties
-
-- [Documentation](https://jupyter-notebook.readthedocs.io/en/stable/extending/contents.html)
-- [GitHub](https://github.com/jupyter/notebook)
+- [Website](https://jupyter.org)
+- [Documentation](https://jupyter-notebook.readthedocs.io/en/stable/)
+- [GitHub Organization](https://github.com/jupyter)
+- [Community](https://discourse.jupyter.org/)
+- [JSON-LD Context](json-ld/jupyter-notebooks-context.jsonld)
 
 ## Maintainers
 
-**FN:** Project Jupyter
-
-**Email:** jupyter@googlegroups.com
+- **FN:** Kin Lane
+- **Email:** kin@apievangelist.com

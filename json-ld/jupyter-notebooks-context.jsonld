@@ -1,0 +1,19 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "jn": "https://raw.githubusercontent.com/api-evangelist/jupyter-notebooks/main/json-ld/jupyter-notebooks-context.jsonld#",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "Notebook": "jn:Notebook",
+    "Cell": "jn:Cell",
+    "Kernel": "jn:Kernel",
+    "KernelSpec": "jn:KernelSpec",
+    "Session": "jn:Session",
+    "Terminal": "jn:Terminal",
+    "cellType": "jn:cellType",
+    "source": "jn:source",
+    "outputs": "jn:outputs",
+    "executionCount": "jn:executionCount"
+  }
+}

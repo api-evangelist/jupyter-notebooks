@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/jupyter-notebooks/main/json-schema/jupyter-notebook-format-schema.json",
+  "title": "Jupyter Notebook (nbformat 4)",
+  "description": "Schema for a Jupyter notebook document (.ipynb) at nbformat major version 4.",
+  "type": "object",
+  "required": ["nbformat", "nbformat_minor", "metadata", "cells"],
+  "properties": {
+    "nbformat": { "type": "integer", "const": 4 },
+    "nbformat_minor": { "type": "integer", "minimum": 0 },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "kernelspec": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "display_name": { "type": "string" },
+            "language": { "type": "string" }
+          }
+        },
+        "language_info": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "version": { "type": "string" },
+            "mimetype": { "type": "string" },
+            "file_extension": { "type": "string" }
+          }
+        },
+        "title": { "type": "string" },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": { "name": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "cells": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": ["cell_type", "source"],
+            "properties": {
+              "cell_type": { "const": "markdown" },
+              "metadata": { "type": "object" },
+              "source": { "type": ["string", "array"] },
+              "attachments": { "type": "object" }
+            }
+          },
+          {
+            "type": "object",
+            "required": ["cell_type", "source"],
+            "properties": {
+              "cell_type": { "const": "raw" },
+              "metadata": { "type": "object" },
+              "source": { "type": ["string", "array"] }
+            }
+          },
+          {
+            "type": "object",
+            "required": ["cell_type", "source", "outputs", "execution_count"],
+            "properties": {
+              "cell_type": { "const": "code" },
+              "metadata": { "type": "object" },
+              "source": { "type": ["string", "array"] },
+              "execution_count": { "type": ["integer", "null"] },
+              "outputs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["output_type"],
+                  "properties": {
+                    "output_type": {
+                      "type": "string",
+                      "enum": ["stream", "display_data", "execute_result", "error"]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
