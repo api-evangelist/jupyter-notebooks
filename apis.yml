@@ -42,11 +42,11 @@ common:
     url: https://jupyter.org
   - type: Documentation
     url: https://jupyter-notebook.readthedocs.io/en/stable/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/jupyter
   - type: Community
     url: https://discourse.jupyter.org/
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/jupyter-notebooks-context.jsonld
 maintainers:
   - FN: Kin Lane
