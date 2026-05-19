@@ -1,0 +1,302 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Jupyter Notebook Server REST API — Contents
+  description: 'Jupyter Notebook Server REST API — Contents. 9 operations. Lead operation: Get contents at a path. Self-contained
+    Naftiko capability covering one Jupyter Notebooks business surface.'
+  tags:
+  - Jupyter Notebooks
+  - Contents
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    JUPYTER_NOTEBOOKS_API_KEY: JUPYTER_NOTEBOOKS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: jupyter-notebooks-contents
+    baseUri: http://localhost:8888/api
+    description: Jupyter Notebook Server REST API — Contents business capability. Self-contained, no shared references.
+    resources:
+    - name: contents-path
+      path: /contents/{path}
+      operations:
+      - name: getcontents
+        method: GET
+        description: Get contents at a path
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+        - name: format
+          in: query
+          type: string
+        - name: content
+          in: query
+          type: integer
+      - name: savecontents
+        method: PUT
+        description: Save or upload contents at a path
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: renamecontents
+        method: PATCH
+        description: Rename or move contents
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcontents
+        method: POST
+        description: Create a new file or directory
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecontents
+        method: DELETE
+        description: Delete contents at a path
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: contents-path-checkpoints
+      path: /contents/{path}/checkpoints
+      operations:
+      - name: listcheckpoints
+        method: GET
+        description: List checkpoints for a file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcheckpoint
+        method: POST
+        description: Create a new checkpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: contents-path-checkpoints-checkpoint_id
+      path: /contents/{path}/checkpoints/{checkpoint_id}
+      operations:
+      - name: restorecheckpoint
+        method: POST
+        description: Restore a file to a checkpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecheckpoint
+        method: DELETE
+        description: Delete a checkpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.JUPYTER_NOTEBOOKS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: jupyter-notebooks-contents-rest
+    port: 8080
+    description: REST adapter for Jupyter Notebook Server REST API — Contents. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/contents/{path}
+      name: contents-path
+      description: REST surface for contents-path.
+      operations:
+      - method: GET
+        name: getcontents
+        description: Get contents at a path
+        call: jupyter-notebooks-contents.getcontents
+        with:
+          type: rest.type
+          format: rest.format
+          content: rest.content
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: savecontents
+        description: Save or upload contents at a path
+        call: jupyter-notebooks-contents.savecontents
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: renamecontents
+        description: Rename or move contents
+        call: jupyter-notebooks-contents.renamecontents
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcontents
+        description: Create a new file or directory
+        call: jupyter-notebooks-contents.createcontents
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecontents
+        description: Delete contents at a path
+        call: jupyter-notebooks-contents.deletecontents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contents/{path}/checkpoints
+      name: contents-path-checkpoints
+      description: REST surface for contents-path-checkpoints.
+      operations:
+      - method: GET
+        name: listcheckpoints
+        description: List checkpoints for a file
+        call: jupyter-notebooks-contents.listcheckpoints
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcheckpoint
+        description: Create a new checkpoint
+        call: jupyter-notebooks-contents.createcheckpoint
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contents/{path}/checkpoints/{checkpoint-id}
+      name: contents-path-checkpoints-checkpoint-id
+      description: REST surface for contents-path-checkpoints-checkpoint_id.
+      operations:
+      - method: POST
+        name: restorecheckpoint
+        description: Restore a file to a checkpoint
+        call: jupyter-notebooks-contents.restorecheckpoint
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecheckpoint
+        description: Delete a checkpoint
+        call: jupyter-notebooks-contents.deletecheckpoint
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: jupyter-notebooks-contents-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Jupyter Notebook Server REST API — Contents. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-contents-path
+      description: Get contents at a path
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jupyter-notebooks-contents.getcontents
+      with:
+        type: tools.type
+        format: tools.format
+        content: tools.content
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: save-upload-contents-path
+      description: Save or upload contents at a path
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: jupyter-notebooks-contents.savecontents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: rename-move-contents
+      description: Rename or move contents
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: jupyter-notebooks-contents.renamecontents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-file-directory
+      description: Create a new file or directory
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: jupyter-notebooks-contents.createcontents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-contents-path
+      description: Delete contents at a path
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: jupyter-notebooks-contents.deletecontents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-checkpoints-file
+      description: List checkpoints for a file
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jupyter-notebooks-contents.listcheckpoints
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-checkpoint
+      description: Create a new checkpoint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: jupyter-notebooks-contents.createcheckpoint
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: restore-file-checkpoint
+      description: Restore a file to a checkpoint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: jupyter-notebooks-contents.restorecheckpoint
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-checkpoint
+      description: Delete a checkpoint
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: jupyter-notebooks-contents.deletecheckpoint
+      outputParameters:
+      - type: object
+        mapping: $.

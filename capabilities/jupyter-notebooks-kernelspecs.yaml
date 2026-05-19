@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Jupyter Notebook Server REST API — KernelSpecs
+  description: 'Jupyter Notebook Server REST API — KernelSpecs. 1 operations. Lead operation: List installed kernel specs.
+    Self-contained Naftiko capability covering one Jupyter Notebooks business surface.'
+  tags:
+  - Jupyter Notebooks
+  - KernelSpecs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    JUPYTER_NOTEBOOKS_API_KEY: JUPYTER_NOTEBOOKS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: jupyter-notebooks-kernelspecs
+    baseUri: http://localhost:8888/api
+    description: Jupyter Notebook Server REST API — KernelSpecs business capability. Self-contained, no shared references.
+    resources:
+    - name: kernelspecs
+      path: /kernelspecs
+      operations:
+      - name: listkernelspecs
+        method: GET
+        description: List installed kernel specs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.JUPYTER_NOTEBOOKS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: jupyter-notebooks-kernelspecs-rest
+    port: 8080
+    description: REST adapter for Jupyter Notebook Server REST API — KernelSpecs. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/kernelspecs
+      name: kernelspecs
+      description: REST surface for kernelspecs.
+      operations:
+      - method: GET
+        name: listkernelspecs
+        description: List installed kernel specs
+        call: jupyter-notebooks-kernelspecs.listkernelspecs
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: jupyter-notebooks-kernelspecs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Jupyter Notebook Server REST API — KernelSpecs. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-installed-kernel-specs
+      description: List installed kernel specs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jupyter-notebooks-kernelspecs.listkernelspecs
+      outputParameters:
+      - type: object
+        mapping: $.

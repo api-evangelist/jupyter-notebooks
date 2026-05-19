@@ -1,0 +1,226 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Jupyter Notebook Server REST API — Kernels
+  description: 'Jupyter Notebook Server REST API — Kernels. 6 operations. Lead operation: List running kernels. Self-contained
+    Naftiko capability covering one Jupyter Notebooks business surface.'
+  tags:
+  - Jupyter Notebooks
+  - Kernels
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    JUPYTER_NOTEBOOKS_API_KEY: JUPYTER_NOTEBOOKS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: jupyter-notebooks-kernels
+    baseUri: http://localhost:8888/api
+    description: Jupyter Notebook Server REST API — Kernels business capability. Self-contained, no shared references.
+    resources:
+    - name: kernels
+      path: /kernels
+      operations:
+      - name: listkernels
+        method: GET
+        description: List running kernels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: startkernel
+        method: POST
+        description: Start a new kernel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: kernels-kernel_id
+      path: /kernels/{kernel_id}
+      operations:
+      - name: getkernel
+        method: GET
+        description: Get kernel info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: shutdownkernel
+        method: DELETE
+        description: Shut down a kernel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: kernels-kernel_id-interrupt
+      path: /kernels/{kernel_id}/interrupt
+      operations:
+      - name: interruptkernel
+        method: POST
+        description: Interrupt a kernel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: kernels-kernel_id-restart
+      path: /kernels/{kernel_id}/restart
+      operations:
+      - name: restartkernel
+        method: POST
+        description: Restart a kernel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.JUPYTER_NOTEBOOKS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: jupyter-notebooks-kernels-rest
+    port: 8080
+    description: REST adapter for Jupyter Notebook Server REST API — Kernels. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/kernels
+      name: kernels
+      description: REST surface for kernels.
+      operations:
+      - method: GET
+        name: listkernels
+        description: List running kernels
+        call: jupyter-notebooks-kernels.listkernels
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: startkernel
+        description: Start a new kernel
+        call: jupyter-notebooks-kernels.startkernel
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kernels/{kernel-id}
+      name: kernels-kernel-id
+      description: REST surface for kernels-kernel_id.
+      operations:
+      - method: GET
+        name: getkernel
+        description: Get kernel info
+        call: jupyter-notebooks-kernels.getkernel
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: shutdownkernel
+        description: Shut down a kernel
+        call: jupyter-notebooks-kernels.shutdownkernel
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kernels/{kernel-id}/interrupt
+      name: kernels-kernel-id-interrupt
+      description: REST surface for kernels-kernel_id-interrupt.
+      operations:
+      - method: POST
+        name: interruptkernel
+        description: Interrupt a kernel
+        call: jupyter-notebooks-kernels.interruptkernel
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kernels/{kernel-id}/restart
+      name: kernels-kernel-id-restart
+      description: REST surface for kernels-kernel_id-restart.
+      operations:
+      - method: POST
+        name: restartkernel
+        description: Restart a kernel
+        call: jupyter-notebooks-kernels.restartkernel
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: jupyter-notebooks-kernels-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Jupyter Notebook Server REST API — Kernels. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-running-kernels
+      description: List running kernels
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jupyter-notebooks-kernels.listkernels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-new-kernel
+      description: Start a new kernel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: jupyter-notebooks-kernels.startkernel
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-kernel-info
+      description: Get kernel info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: jupyter-notebooks-kernels.getkernel
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: shut-down-kernel
+      description: Shut down a kernel
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: jupyter-notebooks-kernels.shutdownkernel
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: interrupt-kernel
+      description: Interrupt a kernel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: jupyter-notebooks-kernels.interruptkernel
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: restart-kernel
+      description: Restart a kernel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: jupyter-notebooks-kernels.restartkernel
+      outputParameters:
+      - type: object
+        mapping: $.
