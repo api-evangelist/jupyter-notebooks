@@ -1,0 +1,480 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Jupyter Notebook Server REST API",
+    "version": "7.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get contents at a path",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8888/api/contents/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "content",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get contents at a path"
+        },
+        {
+          "info": {
+            "name": "Create a new file or directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8888/api/contents/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a new file or directory"
+        },
+        {
+          "info": {
+            "name": "Save or upload contents at a path",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8888/api/contents/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Save or upload contents at a path"
+        },
+        {
+          "info": {
+            "name": "Rename or move contents",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8888/api/contents/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Rename or move contents"
+        },
+        {
+          "info": {
+            "name": "Delete contents at a path",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8888/api/contents/:path",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete contents at a path"
+        },
+        {
+          "info": {
+            "name": "List checkpoints for a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8888/api/contents/:path/checkpoints",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List checkpoints for a file"
+        },
+        {
+          "info": {
+            "name": "Create a new checkpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8888/api/contents/:path/checkpoints",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a new checkpoint"
+        },
+        {
+          "info": {
+            "name": "Restore a file to a checkpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8888/api/contents/:path/checkpoints/:checkpoint_id",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "checkpoint_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restore a file to a checkpoint"
+        },
+        {
+          "info": {
+            "name": "Delete a checkpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8888/api/contents/:path/checkpoints/:checkpoint_id",
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "checkpoint_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a checkpoint"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Kernels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List running kernels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8888/api/kernels"
+          },
+          "docs": "List running kernels"
+        },
+        {
+          "info": {
+            "name": "Start a new kernel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8888/api/kernels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a new kernel"
+        },
+        {
+          "info": {
+            "name": "Get kernel info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8888/api/kernels/:kernel_id",
+            "params": [
+              {
+                "name": "kernel_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get kernel info"
+        },
+        {
+          "info": {
+            "name": "Shut down a kernel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8888/api/kernels/:kernel_id",
+            "params": [
+              {
+                "name": "kernel_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Shut down a kernel"
+        },
+        {
+          "info": {
+            "name": "Interrupt a kernel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8888/api/kernels/:kernel_id/interrupt",
+            "params": [
+              {
+                "name": "kernel_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Interrupt a kernel"
+        },
+        {
+          "info": {
+            "name": "Restart a kernel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8888/api/kernels/:kernel_id/restart",
+            "params": [
+              {
+                "name": "kernel_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restart a kernel"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "KernelSpecs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List installed kernel specs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8888/api/kernelspecs"
+          },
+          "docs": "List installed kernel specs"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List active sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8888/api/sessions"
+          },
+          "docs": "List active sessions"
+        },
+        {
+          "info": {
+            "name": "Create a new session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8888/api/sessions"
+          },
+          "docs": "Create a new session"
+        },
+        {
+          "info": {
+            "name": "Get a session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8888/api/sessions/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a session"
+        },
+        {
+          "info": {
+            "name": "Update a session",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8888/api/sessions/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a session"
+        },
+        {
+          "info": {
+            "name": "Delete a session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8888/api/sessions/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a session"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Terminals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List active terminals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8888/api/terminals"
+          },
+          "docs": "List active terminals"
+        },
+        {
+          "info": {
+            "name": "Start a new terminal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8888/api/terminals"
+          },
+          "docs": "Start a new terminal"
+        },
+        {
+          "info": {
+            "name": "Get a terminal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8888/api/terminals/:terminal_id",
+            "params": [
+              {
+                "name": "terminal_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a terminal"
+        },
+        {
+          "info": {
+            "name": "Stop a terminal",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8888/api/terminals/:terminal_id",
+            "params": [
+              {
+                "name": "terminal_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop a terminal"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
