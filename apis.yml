@@ -37,6 +37,12 @@ apis:
       - type: JSONSchema
         url: json-schema/jupyter-notebook-format-schema.json
 common:
+  - type: VulnerabilityDisclosure
+    url: security/jupyter-notebooks-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/jupyter-notebooks-domain-security.yml
+  - type: Authentication
+    url: authentication/jupyter-notebooks-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/project-jupyter
   - type: Website
@@ -49,6 +55,8 @@ common:
     url: https://discourse.jupyter.org/
   - type: JSONLD
     url: json-ld/jupyter-notebooks-context.jsonld
+  - url: https://blog.jupyter.org/feed
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
