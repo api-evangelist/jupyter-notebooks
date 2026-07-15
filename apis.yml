@@ -37,6 +37,8 @@ apis:
       - type: JSONSchema
         url: json-schema/jupyter-notebook-format-schema.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/jupyter-notebooks-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/jupyter-notebooks-vulnerability-disclosure.yml
   - type: DomainSecurity
