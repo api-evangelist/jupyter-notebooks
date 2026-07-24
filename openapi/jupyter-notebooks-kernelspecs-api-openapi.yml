@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Jupyter Notebook Server REST Contents KernelSpecs API
+  description: REST API for the Jupyter Notebook server, providing access to notebook contents, kernels, kernel specs, sessions, and terminals. Used by clients to drive interactive computing workflows.
+  version: '7.0'
+  contact:
+    name: Project Jupyter
+    url: https://jupyter.org
+  license:
+    name: BSD-3-Clause
+    url: https://github.com/jupyter/notebook/blob/main/LICENSE
+servers:
+- url: http://localhost:8888/api
+  description: Local Jupyter Notebook server
+tags:
+- name: KernelSpecs
+  description: Available kernel specs.
+paths:
+  /kernelspecs:
+    get:
+      tags:
+      - KernelSpecs
+      summary: List installed kernel specs
+      operationId: listKernelSpecs
+      responses:
+        '200':
+          description: Available kernel specs and the default kernel name.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Jupyter-Token

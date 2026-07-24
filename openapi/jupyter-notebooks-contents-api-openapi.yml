@@ -1,0 +1,148 @@
+openapi: 3.0.3
+info:
+  title: Jupyter Notebook Server REST Contents API
+  description: REST API for the Jupyter Notebook server, providing access to notebook contents, kernels, kernel specs, sessions, and terminals. Used by clients to drive interactive computing workflows.
+  version: '7.0'
+  contact:
+    name: Project Jupyter
+    url: https://jupyter.org
+  license:
+    name: BSD-3-Clause
+    url: https://github.com/jupyter/notebook/blob/main/LICENSE
+servers:
+- url: http://localhost:8888/api
+  description: Local Jupyter Notebook server
+tags:
+- name: Contents
+  description: Notebook and file contents.
+paths:
+  /contents/{path}:
+    parameters:
+    - in: path
+      name: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Contents
+      summary: Get contents at a path
+      operationId: getContents
+      parameters:
+      - in: query
+        name: type
+        schema:
+          type: string
+          enum:
+          - directory
+          - file
+          - notebook
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - text
+          - base64
+          - json
+      - in: query
+        name: content
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+      responses:
+        '200':
+          description: Contents at the path.
+    put:
+      tags:
+      - Contents
+      summary: Save or upload contents at a path
+      operationId: saveContents
+      responses:
+        '200':
+          description: Contents saved.
+        '201':
+          description: Contents created.
+    patch:
+      tags:
+      - Contents
+      summary: Rename or move contents
+      operationId: renameContents
+      responses:
+        '200':
+          description: Contents renamed.
+    post:
+      tags:
+      - Contents
+      summary: Create a new file or directory
+      operationId: createContents
+      responses:
+        '201':
+          description: Contents created.
+    delete:
+      tags:
+      - Contents
+      summary: Delete contents at a path
+      operationId: deleteContents
+      responses:
+        '204':
+          description: Contents deleted.
+  /contents/{path}/checkpoints:
+    parameters:
+    - in: path
+      name: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Contents
+      summary: List checkpoints for a file
+      operationId: listCheckpoints
+      responses:
+        '200':
+          description: List of checkpoints.
+    post:
+      tags:
+      - Contents
+      summary: Create a new checkpoint
+      operationId: createCheckpoint
+      responses:
+        '201':
+          description: Checkpoint created.
+  /contents/{path}/checkpoints/{checkpoint_id}:
+    parameters:
+    - in: path
+      name: path
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: checkpoint_id
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Contents
+      summary: Restore a file to a checkpoint
+      operationId: restoreCheckpoint
+      responses:
+        '204':
+          description: Checkpoint restored.
+    delete:
+      tags:
+      - Contents
+      summary: Delete a checkpoint
+      operationId: deleteCheckpoint
+      responses:
+        '204':
+          description: Checkpoint deleted.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Jupyter-Token

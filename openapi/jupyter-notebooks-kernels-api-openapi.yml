@@ -1,0 +1,104 @@
+openapi: 3.0.3
+info:
+  title: Jupyter Notebook Server REST Contents Kernels API
+  description: REST API for the Jupyter Notebook server, providing access to notebook contents, kernels, kernel specs, sessions, and terminals. Used by clients to drive interactive computing workflows.
+  version: '7.0'
+  contact:
+    name: Project Jupyter
+    url: https://jupyter.org
+  license:
+    name: BSD-3-Clause
+    url: https://github.com/jupyter/notebook/blob/main/LICENSE
+servers:
+- url: http://localhost:8888/api
+  description: Local Jupyter Notebook server
+tags:
+- name: Kernels
+  description: Running kernels.
+paths:
+  /kernels:
+    get:
+      tags:
+      - Kernels
+      summary: List running kernels
+      operationId: listKernels
+      responses:
+        '200':
+          description: List of running kernels.
+    post:
+      tags:
+      - Kernels
+      summary: Start a new kernel
+      operationId: startKernel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                path:
+                  type: string
+      responses:
+        '201':
+          description: Kernel started.
+  /kernels/{kernel_id}:
+    parameters:
+    - in: path
+      name: kernel_id
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Kernels
+      summary: Get kernel info
+      operationId: getKernel
+      responses:
+        '200':
+          description: Kernel details.
+    delete:
+      tags:
+      - Kernels
+      summary: Shut down a kernel
+      operationId: shutdownKernel
+      responses:
+        '204':
+          description: Kernel shut down.
+  /kernels/{kernel_id}/interrupt:
+    parameters:
+    - in: path
+      name: kernel_id
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Kernels
+      summary: Interrupt a kernel
+      operationId: interruptKernel
+      responses:
+        '204':
+          description: Kernel interrupted.
+  /kernels/{kernel_id}/restart:
+    parameters:
+    - in: path
+      name: kernel_id
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Kernels
+      summary: Restart a kernel
+      operationId: restartKernel
+      responses:
+        '200':
+          description: Kernel restarted.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Jupyter-Token
