@@ -4,7 +4,20 @@ description: >-
   Jupyter Notebooks is the original web application for creating and sharing computational documents. APIs cover the
   notebook server, kernels, sessions, contents, and terminal management.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/jupyter-notebooks.png
 tags:
   - Data Science
   - Interactive Computing
@@ -16,26 +29,76 @@ created: '2024-01-15'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: jupyter-notebooks:notebook-rest-api
-    name: Jupyter Notebook Server REST API
-    description: >-
-      REST API for the Jupyter Notebook server, providing access to notebook contents, kernels, kernel specs, sessions,
-      and terminals.
-    humanURL: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
-    baseURL: http://localhost:8888/api
-    tags:
-      - Contents
-      - Kernels
-      - Notebooks
-      - Sessions
-      - Terminals
-    properties:
-      - type: Documentation
-        url: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
-      - type: OpenAPI
-        url: openapi/jupyter-notebooks-openapi.yml
-      - type: JSONSchema
-        url: json-schema/jupyter-notebook-format-schema.json
+- aid: jupyter-notebooks:jupyter-notebooks-contents-api
+  name: Jupyter Notebooks Contents API
+  description: Notebook and file contents.
+  humanURL: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
+  baseURL: http://localhost:8888/api
+  tags:
+  - Contents
+  properties:
+  - type: OpenAPI
+    url: openapi/jupyter-notebooks-contents-api-openapi.yml
+  - type: Documentation
+    url: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
+  - type: JSONSchema
+    url: json-schema/jupyter-notebook-format-schema.json
+- aid: jupyter-notebooks:jupyter-notebooks-kernels-api
+  name: Jupyter Notebooks Kernels API
+  description: Running kernels.
+  humanURL: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
+  baseURL: http://localhost:8888/api
+  tags:
+  - Kernels
+  properties:
+  - type: OpenAPI
+    url: openapi/jupyter-notebooks-kernels-api-openapi.yml
+  - type: Documentation
+    url: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
+  - type: JSONSchema
+    url: json-schema/jupyter-notebook-format-schema.json
+- aid: jupyter-notebooks:jupyter-notebooks-kernelspecs-api
+  name: Jupyter Notebooks KernelSpecs API
+  description: Available kernel specs.
+  humanURL: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
+  baseURL: http://localhost:8888/api
+  tags:
+  - KernelSpecs
+  properties:
+  - type: OpenAPI
+    url: openapi/jupyter-notebooks-kernelspecs-api-openapi.yml
+  - type: Documentation
+    url: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
+  - type: JSONSchema
+    url: json-schema/jupyter-notebook-format-schema.json
+- aid: jupyter-notebooks:jupyter-notebooks-sessions-api
+  name: Jupyter Notebooks Sessions API
+  description: Notebook sessions.
+  humanURL: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
+  baseURL: http://localhost:8888/api
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/jupyter-notebooks-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
+  - type: JSONSchema
+    url: json-schema/jupyter-notebook-format-schema.json
+- aid: jupyter-notebooks:jupyter-notebooks-terminals-api
+  name: Jupyter Notebooks Terminals API
+  description: Terminal sessions.
+  humanURL: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
+  baseURL: http://localhost:8888/api
+  tags:
+  - Terminals
+  properties:
+  - type: OpenAPI
+    url: openapi/jupyter-notebooks-terminals-api-openapi.yml
+  - type: Documentation
+    url: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
+  - type: JSONSchema
+    url: json-schema/jupyter-notebook-format-schema.json
 common:
   - type: AgenticAccess
     url: agentic-access/jupyter-notebooks-agentic-access.yml
