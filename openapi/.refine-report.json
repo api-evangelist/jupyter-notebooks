@@ -1,0 +1,22 @@
+{
+  "provider": "jupyter-notebooks",
+  "sources": [
+    "jupyter-notebooks-contents-api-openapi.yml",
+    "jupyter-notebooks-kernels-api-openapi.yml",
+    "jupyter-notebooks-kernelspecs-api-openapi.yml",
+    "jupyter-notebooks-sessions-api-openapi.yml",
+    "jupyter-notebooks-terminals-api-openapi.yml"
+  ],
+  "outputs": [
+    "jupyter-notebooks-contents-api-openapi.yml",
+    "jupyter-notebooks-kernels-api-openapi.yml",
+    "jupyter-notebooks-kernelspecs-api-openapi.yml",
+    "jupyter-notebooks-sessions-api-openapi.yml",
+    "jupyter-notebooks-terminals-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
