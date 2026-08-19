@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Jupyter Notebook Server REST Contents Terminals API",
+    "version": "7.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Terminals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List active terminals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8888/api/terminals"
+          },
+          "docs": "List active terminals"
+        },
+        {
+          "info": {
+            "name": "Start a new terminal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8888/api/terminals"
+          },
+          "docs": "Start a new terminal"
+        },
+        {
+          "info": {
+            "name": "Get a terminal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8888/api/terminals/:terminal_id",
+            "params": [
+              {
+                "name": "terminal_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a terminal"
+        },
+        {
+          "info": {
+            "name": "Stop a terminal",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8888/api/terminals/:terminal_id",
+            "params": [
+              {
+                "name": "terminal_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop a terminal"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

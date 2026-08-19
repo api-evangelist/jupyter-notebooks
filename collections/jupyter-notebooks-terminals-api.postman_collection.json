@@ -1,0 +1,288 @@
+{
+  "item": [
+    {
+      "id": "91b1e4db-4156-4101-9801-60def19f1be3",
+      "name": "Terminals",
+      "description": {
+        "content": "Terminal sessions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "91e2fbc2-27a8-45cb-a896-a5ec1e7b467f",
+          "name": "List active terminals",
+          "request": {
+            "name": "List active terminals",
+            "description": {},
+            "url": {
+              "path": [
+                "terminals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc70f3ae-5af5-45c5-8ed0-900377a6605f",
+              "name": "List of active terminals.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "terminals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "399b47ee-ed51-41be-9a0e-0a3742783486",
+          "name": "Start a new terminal",
+          "request": {
+            "name": "Start a new terminal",
+            "description": {},
+            "url": {
+              "path": [
+                "terminals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87e197bd-5b5b-477a-9721-8804965ab4ae",
+              "name": "Terminal started.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "terminals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d8bdc64-4f94-4ed7-80cd-4d6b437a60da",
+          "name": "Get a terminal",
+          "request": {
+            "name": "Get a terminal",
+            "description": {},
+            "url": {
+              "path": [
+                "terminals",
+                ":terminal_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "terminal_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed1cc96e-fccf-41c3-8b26-6e8ed4c40e9f",
+              "name": "Terminal details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "terminals",
+                    ":terminal_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "terminal_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d28564a5-af3e-4d41-8fdf-ecd9af939f55",
+          "name": "Stop a terminal",
+          "request": {
+            "name": "Stop a terminal",
+            "description": {},
+            "url": {
+              "path": [
+                "terminals",
+                ":terminal_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "terminal_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec0c4578-f4ac-416f-afc7-1819f78a1c7b",
+              "name": "Terminal stopped.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "terminals",
+                    ":terminal_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "terminal_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8888/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c929123e-c160-4b91-acb0-028b07fb9b50",
+    "name": "Jupyter Notebook Server REST Contents Terminals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Jupyter Notebook server, providing access to notebook contents, kernels, kernel specs, sessions, and terminals. Used by clients to drive interactive computing workflows.\n\nContact Support:\n Name: Project Jupyter",
+      "type": "text/plain"
+    }
+  }
+}

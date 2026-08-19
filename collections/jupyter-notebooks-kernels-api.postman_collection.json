@@ -1,0 +1,461 @@
+{
+  "item": [
+    {
+      "id": "fda88a9e-5c96-4ed3-9c1a-1be391350d37",
+      "name": "Kernels",
+      "description": {
+        "content": "Running kernels.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "821ff58b-b52e-4a62-b826-ff1e79271489",
+          "name": "List running kernels",
+          "request": {
+            "name": "List running kernels",
+            "description": {},
+            "url": {
+              "path": [
+                "kernels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b31fc5eb-e34f-4154-af0a-e9eb8125b7c8",
+              "name": "List of running kernels.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kernels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b5d0c34-4774-4f04-8706-d7c1ccbad677",
+          "name": "Start a new kernel",
+          "request": {
+            "name": "Start a new kernel",
+            "description": {},
+            "url": {
+              "path": [
+                "kernels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"path\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14ce2d59-e9c7-454d-9511-3a8ecb398850",
+              "name": "Kernel started.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kernels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"path\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53572526-4202-4624-9124-bd2387b19cb8",
+          "name": "Get kernel info",
+          "request": {
+            "name": "Get kernel info",
+            "description": {},
+            "url": {
+              "path": [
+                "kernels",
+                ":kernel_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "kernel_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97b61a03-5f4d-41f1-aa23-4768b7cda897",
+              "name": "Kernel details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kernels",
+                    ":kernel_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "kernel_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0b46714-5693-493f-a851-4d198ac1ca6e",
+          "name": "Shut down a kernel",
+          "request": {
+            "name": "Shut down a kernel",
+            "description": {},
+            "url": {
+              "path": [
+                "kernels",
+                ":kernel_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "kernel_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2cd1977b-08e0-4780-9213-74497e94ae3c",
+              "name": "Kernel shut down.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kernels",
+                    ":kernel_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "kernel_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb56d64a-30f9-4902-9e55-538a2f795750",
+          "name": "Interrupt a kernel",
+          "request": {
+            "name": "Interrupt a kernel",
+            "description": {},
+            "url": {
+              "path": [
+                "kernels",
+                ":kernel_id",
+                "interrupt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "kernel_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3474ea6-68c6-499f-9816-1ddcc06ae5f1",
+              "name": "Kernel interrupted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kernels",
+                    ":kernel_id",
+                    "interrupt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "kernel_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fc163f2-6fb9-4574-921c-fba4cae34c1f",
+          "name": "Restart a kernel",
+          "request": {
+            "name": "Restart a kernel",
+            "description": {},
+            "url": {
+              "path": [
+                "kernels",
+                ":kernel_id",
+                "restart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "kernel_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d48b44d-90f0-4734-87c1-4ba33eb34ac1",
+              "name": "Kernel restarted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "kernels",
+                    ":kernel_id",
+                    "restart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "kernel_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8888/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "df53d43a-2d72-4694-ae66-e23e3dc05c5f",
+    "name": "Jupyter Notebook Server REST Contents Kernels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Jupyter Notebook server, providing access to notebook contents, kernels, kernel specs, sessions, and terminals. Used by clients to drive interactive computing workflows.\n\nContact Support:\n Name: Project Jupyter",
+      "type": "text/plain"
+    }
+  }
+}
