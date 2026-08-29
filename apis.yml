@@ -4,6 +4,17 @@ description: >-
   Jupyter Notebooks is the original web application for creating and sharing computational documents. APIs cover the
   notebook server, kernels, sessions, contents, and terminal management.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
