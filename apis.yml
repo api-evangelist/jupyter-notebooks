@@ -62,7 +62,7 @@ apis:
   humanURL: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
   baseURL: http://localhost:8888/api
   tags:
-  - Kernel
+  - Kernels
   tags_raw:
   - Kernels
   properties:
@@ -78,7 +78,7 @@ apis:
   humanURL: https://jupyter-server.readthedocs.io/en/latest/developers/rest-api.html
   baseURL: http://localhost:8888/api
   tags:
-  - Kernelspecs
+  - KernelSpecs
   tags_raw:
   - KernelSpecs
   properties:
