@@ -17,6 +17,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "jupyter-notebooks-contents-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "jupyter-notebooks-kernels-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "jupyter-notebooks-kernelspecs-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "jupyter-notebooks-sessions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "jupyter-notebooks-terminals-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
